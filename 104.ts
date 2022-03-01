@@ -26,10 +26,21 @@ const maxDepth = (root: BinaryTreeType): number => {
     dfs(root);
     return max;
 };
+/**
+ * 递归的方式
+ * @param {TreeNode} root
+ * @return {number}
+ */
+const maxDepth2 = (root: BinaryTreeType): number => {
+    if (root == null) return 0;
+    const left = maxDepth(root.left);
+    const right = maxDepth(root.right);
+    return Math.max(left, right) + 1;
+};
 
 // [3,9,20,null,null,15,7]
-const result = arrayToBST([3,9,20,null,null,15,7]);
+const result = arrayToBST([3, 9, 20, null, null, 15, 7]);
 console.log(maxDepth(result)); // 3
 // []
 const result2 = arrayToBST([]);
-console.log(maxDepth(result2)); // 0
+console.log(maxDepth2(result2)); // 0
