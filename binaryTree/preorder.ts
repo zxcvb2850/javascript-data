@@ -17,6 +17,8 @@ const preorder = (root: BinaryTreeType): void => {
 
 preorder(binaryTree);
 
+console.log("-----------------------------------");
+
 // 先序遍历二叉树 - 非递归
 const preorderNotRecursive = (root: BinaryTreeType): void => {
     if(!root) return;

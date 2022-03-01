@@ -39,3 +39,24 @@ const binaryTree: BinaryTreeType = {
 }
 
 export default binaryTree;
+
+class TreeNode implements BinaryTreeType {
+    val: string | number;
+    left: BinaryTreeType;
+    right: BinaryTreeType
+
+    constructor(val) {
+        this.val = val;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+export const arrayToBST = (arr: number[] | null[], index = 0): BinaryTreeType => {
+    if (index > arr.length) return;
+    const root = new TreeNode(arr[index]);
+    root.left = arr[2 * index + 1] ? arrayToBST(arr, 2 * index + 1) : null;
+    root.right = arr[2 * index + 2] ? arrayToBST(arr, 2 * index + 2) : null;
+    return root;
+}
+

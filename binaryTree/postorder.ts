@@ -20,12 +20,17 @@ const postorder = (root: BinaryTreeType): void => {
 // 后序遍历二叉树 - 非递归
 const postorderNotRecursive = (root: BinaryTreeType): void => {
     if (!root) return;
-    const stack: BinaryTreeType[] = [];
-    let p = root;
-    while (p) {
-        stack.push(p);
-        p = p.left;
+    const stack: BinaryTreeType[] = [root];
+    const outputStack: BinaryTreeType[] = [];
+    while (stack.length) {
+        const n = stack.pop();
+        outputStack.push(n);
+        if (n.left) stack.push(n.left);
+        if (n.right) stack.push(n.right);
     }
-    console.log(stack);
+    while (outputStack.length) {
+        const n = outputStack.pop();
+        console.log(n.val);
+    }
 }
 postorderNotRecursive(binaryTree);
