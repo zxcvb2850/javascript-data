@@ -7,7 +7,7 @@
  *     this.right = (right===undefined ? null : right)
  * }
  */
-import {arrayToBST, BinaryTreeType} from "./binaryTree";
+import {arrayToBinaryTree, BinaryTreeType} from "./binaryTree";
 
 /**
  * @param {TreeNode} root
@@ -39,8 +39,8 @@ const maxDepth2 = (root: BinaryTreeType): number => {
 };
 
 // [3,9,20,null,null,15,7]
-const result = arrayToBST([3, 9, 20, null, null, 15, 7]);
+const result = arrayToBinaryTree([3, 9, 20, null, null, 15, 7]);
 console.log(maxDepth(result)); // 3
 // []
-const result2 = arrayToBST([]);
+const result2 = arrayToBinaryTree([]);
 console.log(maxDepth2(result2)); // 0

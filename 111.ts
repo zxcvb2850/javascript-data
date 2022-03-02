@@ -10,7 +10,7 @@
  *     this.right = (right===undefined ? null : right)
  * }
  */
-import {arrayToBST, BinaryTreeType} from "./binaryTree";
+import {arrayToBinaryTree, BinaryTreeType} from "./binaryTree";
 
 /**
  * @param {TreeNode} root
@@ -18,7 +18,6 @@ import {arrayToBST, BinaryTreeType} from "./binaryTree";
  */
 const minDepth = (root: BinaryTreeType): number => {
     if (!root) return 0;
-    let res = 0;
 
     const q: [BinaryTreeType, number][] = [[root, 1]];
     while (q.length) {
@@ -34,38 +33,9 @@ const minDepth = (root: BinaryTreeType): number => {
 };
 
 // [3,9,20,null,null,15,7]
-// console.log(minDepth(arrayToBST([3, 9, 20, null, null, 15, 7]))); // 2
+const result = arrayToBinaryTree([3, 9, 20, null, null, 15, 7]);
+console.log(minDepth(result)); // 2
 //
 // [2,null,3,null,4,null,5,null,6]
-// console.log(minDepth(arrayToBST([2, null, 3, null, 4, null, 5, null, 6]))); // 5
-
-const arr = [2, null, 3, null, 4, null, 5, null, 6];
-const obj: BinaryTreeType = {
-    val: 2,
-    left: null,
-    right: {
-        val: 3,
-        left: null,
-        right: {
-            val: 4,
-            left: null,
-            right: {
-                val: 5,
-                left: null,
-                right: {
-                    val: 6,
-                    left: null,
-                    right: {
-                        val: 6,
-                        left: null,
-                        right: null,
-                    }
-                }
-            }
-        }
-    },
-}
-// 数组转二叉树
-const ArrayTOBinomialTree = (arr: number[] | null[]) => {
-}
-
+const result2 = arrayToBinaryTree([2, null, 3, null, 4, null, 5, null, 6]);
+console.log(minDepth(result2)); // 5
