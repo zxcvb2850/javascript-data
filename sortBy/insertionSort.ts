@@ -15,8 +15,9 @@ const insertionSort = <T>(nums: T[]): T[] => {
             }
             j--;
         }
-        nums[j] = temp;
-        console.log("-")
+        if (j !== i) {
+            nums[j] = temp;
+        }
     }
     return nums;
 }
