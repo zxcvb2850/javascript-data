@@ -1,7 +1,8 @@
 /**
  * 堆
  */
-class MinHeap {
+// 仅仅支持数字
+export default class MinHeap {
     heap: any[];
 
     constructor() {
@@ -66,8 +67,42 @@ class MinHeap {
         return this.heap.length;
     }
 }
+type MinHeapObjectType = {
+    value: number,
+    key: number,
+}
 
-const h = new MinHeap();
+// 仅仅支持对象
+export class MinHeapObject extends MinHeap {
+    insterObj(val: MinHeapObjectType) {
+        this.heap.push(val);
+        this.shiftUp(this.heap.length - 1);
+    }
+
+    shiftUp(index: number) {
+        if (index === 0) return;
+        const parentIndex = this.getParentIndex(index);
+        if (this.heap[parentIndex] && this.heap[parentIndex].value > this.heap[index].value) {
+            this.swap(parentIndex, index);
+            this.shiftUp(parentIndex);
+        }
+    }
+
+    shiftDown(index) {
+        const leftIndex = this.getLeftIndex(index);
+        const rightIndex = this.getRightIndex(index);
+        if (this.heap[leftIndex] && this.heap[leftIndex].value < this.heap[index].value) {
+            this.swap(leftIndex, index);
+            this.shiftDown(leftIndex);
+        }
+        if (this.heap[rightIndex] && this.heap[rightIndex].value < this.heap[index].value) {
+            this.swap(rightIndex, index);
+            this.shiftDown(rightIndex);
+        }
+    }
+}
+
+/*const h = new MinHeap();
 h.insert(1);
 h.insert(4);
 h.insert(3);
@@ -75,4 +110,4 @@ h.insert(2);
 h.insert(5);
 console.log(h);
 h.pop();
-console.log(h);
+console.log(h);*/
