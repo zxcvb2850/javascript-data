@@ -24,5 +24,5 @@ export const returnLinkedList = (arr: number[]): ListNodeType => {
         temp = temp.next;
     }
 
-    return res;
+    return res.next;
 }
