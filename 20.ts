@@ -9,6 +9,7 @@
  */
 const isValid = (s: string): boolean => {
     const len = s.length;
+    if(len % 2) return ;
     const map: Map<string, string> = new Map();
     map.set('(', ')');
     map.set('[', ']');
