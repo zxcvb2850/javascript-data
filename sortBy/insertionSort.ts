@@ -3,7 +3,7 @@
  */
 const insertionSort = <T>(nums: T[]): T[] => {
     const len = nums.length;
-    for (let i = 0; i < len; i++) {
+    for (let i = 1; i < len; i++) {
         const temp = nums[i];
         let j = i;
         while (j > 0) {
