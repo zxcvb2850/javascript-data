@@ -14,7 +14,18 @@ const intersection = (nums1: number[], nums2: number[]): number[] => {
 
     return Array.from(res);*/
 
-    return [...new Set(nums1)].filter(n => nums2.indexOf(n) > -1);
+    // return [...new Set(nums1)].filter(n => nums2.indexOf(n) > -1);
+    const map: Map<number, boolean> = new Map();
+    nums1.forEach(n => map.set(n, true));
+    const res = [];
+    nums2.forEach(n => {
+        if (map.has(n)) {
+            res.push(n);
+            map.delete(n);
+        }
+    })
+
+    return res;
 }
 
 const result = intersection([1, 2, 2, 1], [2, 2]);
