@@ -25,20 +25,21 @@ const convert = (s: string, numRows: number): string => {
     })
     return str;*/
 
-    const len = s.length;
-    if (len < 2 || numRows >= len) return s;
-    const t = numRows * 2 - 2;
-
+    const n = s.length, r = numRows;
+    if (r === 1 || r >= n) {
+        return s;
+    }
+    const t = r * 2 - 2;
     const ans: string[] = [];
-    for (let i = 0; i < numRows; i++) {
-        for (let j = 0; j < len - i; j += t) {
-            ans.push(s[j + i]);
-            if (i && i < numRows - 1 && j + t - i < len) {
-                ans.push(s[j + t - i]);
+    for (let i = 0; i < r; i++) { // 枚举矩阵的行
+        for (let j = 0; j < n - i; j += t) { // 枚举每个周期的起始下标
+            ans.push(s[j + i]); // 当前周期的第一个字符
+            if (0 < i && i < r - 1 && j + t - i < n) {
+                ans.push(s[j + t - i]); // 当前周期的第二个字符
             }
         }
     }
-    return ans.join("");
+    return ans.join('');
 }
 
 const result = convert("ABCDEFG", 3);
@@ -47,5 +48,5 @@ console.log(result);
 const result2 = convert("Apalindromeisaword,phrase,number,orothersequenceofunitsthatcanbereadthesamewayineitherdirection,withgeneralallowancesforadjustmentstopunctuationandworddividers.", 2);
 console.log(result2); // Aaidoeswr,haenme,rtesqecouishtabrateaeaietedrcinwtgnrlloacsoajsmnsoucutoadodiiesplnrmiaodprs,ubroohreunefnttacneedhsmwynihrieto,iheeaalwnefrdutettpntainnwrdvdr.
 
-const result3 = convert("A", 2);
+const result3 = convert("AB", 2);
 console.log(result3);
