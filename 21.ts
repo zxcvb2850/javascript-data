@@ -10,7 +10,7 @@ const mergeTwoLists = (list1: ListNode | null, list2: ListNode | null): ListNode
     let p1 = list1;
     let p2 = list2;
     while (p1 && p2) {
-        if(p1.val < p2.val){
+        if (p1.val < p2.val) {
             p.next = p1;
             p1 = p1.next;
         } else {
@@ -19,14 +19,12 @@ const mergeTwoLists = (list1: ListNode | null, list2: ListNode | null): ListNode
         }
         p = p.next;
     }
-    if (p1) {
-        p.next = p1;
-    }
-    if (p2) {
-        p.next = p2;
-    }
+    p.next = p1 ? p1 : p2;
     return res.next;
 };
 
-const result = mergeTwoLists(returnLinkedList([1,2,4]), returnLinkedList([1,3,4]));
-console.log(JSON.stringify(result));
+console.log(JSON.stringify(mergeTwoLists(returnLinkedList([1, 2, 4]), returnLinkedList([1, 3, 4]))));
+console.log("==========================");
+
+console.log(JSON.stringify(mergeTwoLists(returnLinkedList([3, 4, 5]), returnLinkedList([1, 2, 4]))));
+console.log("==========================");
