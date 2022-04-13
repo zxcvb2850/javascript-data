@@ -30,17 +30,24 @@ const maxDepth = (root: BinaryTreeType): number => {
  * 递归的方式
  * @param {TreeNode} root
  * @return {number}
+ * todo 理解递归 https://lyl0724.github.io/2020/01/25/1/
  */
 const maxDepth2 = (root: BinaryTreeType): number => {
     if (root == null) return 0;
-    const left = maxDepth(root.left);
-    const right = maxDepth(root.right);
+    const left = maxDepth2(root.left);
+    const right = maxDepth2(root.right);
     return Math.max(left, right) + 1;
 };
 
 // [3,9,20,null,null,15,7]
-const result = arrayToBinaryTree([3, 9, 20, null, null, 15, 7]);
-console.log(maxDepth(result)); // 3
-// []
-const result2 = arrayToBinaryTree([]);
-console.log(maxDepth2(result2)); // 0
+console.log(maxDepth(arrayToBinaryTree([3, 9, 20, null, null, 15, 7]))); // 3
+console.log("====================");
+
+console.log(maxDepth2(arrayToBinaryTree([3, 9, 20, null, null, 15, 7]))); // 3
+console.log("====================");
+
+console.log(maxDepth(arrayToBinaryTree([]))); // 0
+console.log("====================");
+
+console.log(maxDepth2(arrayToBinaryTree([]))); // 0
+console.log("====================");
