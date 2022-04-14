@@ -57,7 +57,7 @@ export const arrayToBinaryTree = (arr: number[]): BinaryTreeType => {
         return null;
     }
     const root: BinaryTreeType = new TreeNode(arr[0]);
-    // 是否是左孩子节点
+    // 是否是左子节点
     let isLChild = true;
     // 用数组的push和shift模拟队列
     const queue: BinaryTreeType[] = [];
