@@ -18,19 +18,12 @@
  * */
 const removeElement = (nums: number[], val: number): number => {
     const len = nums.length;
-    /*
     // 同样使用双指针法
     let i = 0, j = len - 1;
     while (i <= j) {
-        if (nums[j] === val) {
-            // 因为结果只看前几位数值，所以从右往左读取
-            j--;
-        } else if (nums[i] === val) {
+        if (nums[i] === val) {
             // 当左侧值等于目标值时，则需要将当前值与右指针值交换
-            const t = nums[i];
             nums[i] = nums[j];
-            nums[j] = t;
-            i++;
             j--;
         } else {
             // 左指针向右移动一格
@@ -38,15 +31,15 @@ const removeElement = (nums: number[], val: number): number => {
         }
     }
     // 因为判断有 = ，所以结果无需 +1
-    return i;*/
+    return i;
 
-    let k = 0;
+    /*let k = 0;
     for (let i = 0; i < len; i++) {
         if (nums[i] !== val) {
             nums[k++] = nums[i];
         }
     }
-    return k;
+    return k;*/
 }
 
 console.log(removeElement([3, 2, 2, 3], 3));
