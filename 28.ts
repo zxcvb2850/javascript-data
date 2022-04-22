@@ -13,7 +13,7 @@ const strStr = (haystack: string, needle: string): number => {
     if (!r) return 0;
     if (l < r) return -1;
 
-    /* 永远的暴力解法 */
+    /* 永远的暴力解法 */ // todo KMP 算法需要了解一下 题解：https://leetcode-cn.com/problems/implement-strstr/solution/shi-xian-strstr-by-leetcode-solution-ds6y/
     for (let i = 0; i < l; i++) {
         for (let j = 0; j < r; j++) {
             const n = haystack[i + j];
