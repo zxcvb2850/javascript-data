@@ -29,7 +29,7 @@ const findSubstring = (s: string, words: string[]): number[] => {
     return res;*/
 
     /* 又是一个暴力解法 - 依旧是不推荐 */
-    const res: number[] = [];
+    /*const res: number[] = [];
     if (!words.length) return res;
     const wordItemLen = words[0].length;
     const wordLen = wordItemLen * words.length;
@@ -54,6 +54,47 @@ const findSubstring = (s: string, words: string[]): number[] => {
 
         isExist && res.push(i);
     }
+    return res;*/
+
+    /* 滑窗的方式 */
+    const res: number[] = [];
+    if (!words.length) return res;
+    const len = s.length;
+    const wordMap = {};
+    const itemLen = words[0].length;
+    for (const w of words) {
+        wordMap[w] ? wordMap[w]++ : wordMap[w] = 1;
+    }
+    let l = 0; // 左指针
+    let r = 0; // 右指针
+    let count = 0; // 统计匹配的次数
+    let win = {}; // 展示的次数
+    for (let i = 0; i < itemLen; i++) {
+        l = r = i;
+        count = 0;
+        win = {};
+        while (r <= len - itemLen) {
+            const w = s.substring(r, r + itemLen);
+            r += itemLen;
+            if (!wordMap[w]) {
+                win = {}
+                count = 0;
+                l = r;
+            } else {
+                win[w] = (win[w] || 0) + 1;
+                count++;
+                while (win[w] > wordMap[w]) {
+                    // 防止有多个相同的内容
+                    const w = s.substring(l, l + itemLen);
+                    win[w] = (win[w] || 0) - 1;
+                    count--;
+                    l += itemLen;
+                }
+                if (count === words.length) res.push(l);
+            }
+        }
+    }
+
     return res;
 }
 
