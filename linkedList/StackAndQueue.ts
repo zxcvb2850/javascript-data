@@ -9,8 +9,8 @@ class MyQueue {
     private tail: ListNodeType;
     private size = 0;
 
-    push(linkNode: number): void {
-        const newLinkNode = new ListNode(linkNode);
+    push(item: number): number {
+        const newLinkNode = new ListNode(item);
         if (!this.head) {
             this.head = newLinkNode;
         }
@@ -22,15 +22,23 @@ class MyQueue {
         this.tail = newLinkNode;
 
         this.size++;
+
+        return this.size;
     }
 
-    unshift(): number | null {
+    shift(): number | null {
         const headNode = this.head;
         if (this.head) {
             this.head = this.head.next;
             this.size--;
         }
         return headNode?.val || null;
+    }
+    unshift(item: number): number{
+        const newLinkNode = new ListNode(item);
+        newLinkNode.next = this.head;
+        this.head = newLinkNode;
+        return this.size;
     }
 
     getList(): ListNodeType{
@@ -48,15 +56,15 @@ queue.push(200);
 queue.push(300);
 console.log("length", queue.length); // 3
 console.log("link", queue.getList()); // 100->200->300
-console.log("unshift", queue.unshift()); // 100
+console.log("unshift", queue.shift()); // 100
 console.log("length", queue.length); // 2
 console.log("link", queue.getList()); // 200->300
-console.log("unshift", queue.unshift()); // 200
+console.log("unshift", queue.shift()); // 200
 console.log("length", queue.length); // 1
 console.log("link", queue.getList()); // 300
-console.log("unshift", queue.unshift()); // 300
+console.log("unshift", queue.shift()); // 300
 console.log("length", queue.length); // 0
 console.log("link", queue.getList()); // null
-console.log("unshift", queue.unshift()); // null
+console.log("unshift", queue.shift()); // null
 console.log("length", queue.length); // 0
 console.log("link", queue.getList()); // null
